@@ -1,7 +1,20 @@
+<!DOCTYPE html>
 <head>
   <title>Firefly</title>
-  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="firefly.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link href='https://fonts.googleapis.com/css?family=Cutive Mono' rel='stylesheet'>
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script
+    src="https://unpkg.com/react@18/umd/react.development.js"
+    crossorigin
+  ></script>
+  <script
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    crossorigin
+  ></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 </head>
 <body>
   <div class="firefly"></div>
@@ -36,4 +49,47 @@
   <div class="firefly"></div>
   <div class="firefly"></div>
   <div class="firefly"></div>
+
+  <div class="tile is-vertical is-full">
+    <div class="tile">
+      <div class="tile is-parent is-vertical">
+        <textarea
+          class="textarea tile is-child has-text-white"
+          rows="25"
+          style="
+            background-color: rgba(0, 0, 0, 0.5);
+            border-color: rgba(0, 0, 0, 0.5);
+            font-family: Cutive Mono;
+          "
+          placeholder="Plain Text"
+        ></textarea>
+      </div>
+      <div class="tile is-parent is-vertical">
+        <textarea
+          class="textarea tile is-child has-text-white"
+          rows="25"
+          style="
+            background-color: rgba(0, 0, 0, 0.5);
+            border-color: rgba(0, 0, 0, 0.5);
+            font-family: Cutive Mono;
+          "
+          placeholder="Cypher Text"
+        ></textarea>
+      </div>
+    </div>
+    <div class="tile is-parent">
+      <textarea
+        class="textarea tile is-child has-text-white"
+        style="
+          background-color: rgba(0, 0, 0, 0.5);
+          border-color: rgba(0, 0, 0, 0.5);
+          font-family: Cutive Mono;
+        "
+        placeholder="Key"
+      ></textarea>
+    </div>
+  </div>
+
+  <!-- Load our React component. -->
+  <script src="script.js"></script>
 </body>
