@@ -5,7 +5,7 @@ const keyElement = document.getElementById('key');
 var plaintextEdited = false;
 
 var charArray = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".split('');
-charArray = charArray.concat([' ', '.', ',', '!', '?', ':', ';', '"', '\'', '-', '_', '+', '=', '%', '$', '#', '@', '&', '\\', '(', ')']);
+charArray = charArray.concat([' ', '.', ',', '!', '?', ':', ';', '"', '\'', '-', '_', '+', '=', '%', '$', '#', '@', '&', '\\', '(', ')', '\n']);
 
 Number.prototype.mod = function (n) {
     "use strict";
@@ -60,6 +60,10 @@ const encrypt = (plaintext, key) => {
         if (lookupIndex !== -1) {
             console.log("ENC: lookupIndex of " + element + ":" + lookupIndex + " and key.charCodeAt(" + index % key.length + "):" + key.charCodeAt(index % key.length));
             array[index] = charArray[(lookupIndex + key.charCodeAt(index % key.length)) % charArray.length];
+
+            if (array[index] === '\n') {
+                array[index] = '`';
+            }
         } else {
             console.log("lookupIndex of " + element + " not found");
             array[index] = '^';
@@ -73,6 +77,11 @@ const decrypt = (cypherText, key) => {
     var result = cypherText.split('');
 
     result.forEach((element, index, array) => {
+        if (element === '`') {
+            array[index] = '\n';
+            element = '\n';
+        }
+        
         var lookupIndex = charArray.indexOf(element);
 
         if (lookupIndex !== -1) {
