@@ -1,20 +1,12 @@
 <!DOCTYPE html>
 <head>
-  <title>Firefly</title>
+  <title>Lampyridae</title>
   <link rel="stylesheet" href="firefly.css" />
   <link rel="stylesheet" href="style.css" />
-  <link href='https://fonts.googleapis.com/css?family=Cutive Mono' rel='stylesheet'>
-  <!-- Load React. -->
-  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-  <script
-    src="https://unpkg.com/react@18/umd/react.development.js"
-    crossorigin
-  ></script>
-  <script
-    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
-    crossorigin
-  ></script>
-  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css?family=Cutive Mono"
+    rel="stylesheet"
+  />
 </head>
 <body>
   <div class="firefly"></div>
@@ -54,6 +46,7 @@
     <div class="tile">
       <div class="tile is-parent is-vertical">
         <textarea
+          id="plaintext"
           class="textarea tile is-child has-text-white"
           rows="25"
           style="
@@ -62,10 +55,12 @@
             font-family: Cutive Mono;
           "
           placeholder="Plain Text"
+          oninput="plainTextChangeHandler()"
         ></textarea>
       </div>
       <div class="tile is-parent is-vertical">
         <textarea
+          id="ciphertext"
           class="textarea tile is-child has-text-white"
           rows="25"
           style="
@@ -74,11 +69,13 @@
             font-family: Cutive Mono;
           "
           placeholder="Cypher Text"
+          oninput="cypherTextChangeHandler()"
         ></textarea>
       </div>
     </div>
     <div class="tile is-parent">
       <textarea
+        id="key"
         class="textarea tile is-child has-text-white"
         style="
           background-color: rgba(0, 0, 0, 0.5);
@@ -86,6 +83,7 @@
           font-family: Cutive Mono;
         "
         placeholder="Key"
+        oninput="keyChangeHandler()"
       ></textarea>
     </div>
   </div>
