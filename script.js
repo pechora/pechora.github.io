@@ -52,20 +52,17 @@ const keyChangeHandler = () => {
 
 const encrypt = (plaintext, key) => {
     var result = plaintext.split('');
-    console.log(charArray);
 
     result.forEach((element, index, array) => {
         var lookupIndex = charArray.indexOf(element);
 
         if (lookupIndex !== -1) {
-            console.log("ENC: lookupIndex of " + element + ":" + lookupIndex + " and key.charCodeAt(" + index % key.length + "):" + key.charCodeAt(index % key.length));
             array[index] = charArray[(lookupIndex + key.charCodeAt(index % key.length)) % charArray.length];
 
             if (array[index] === '\n') {
                 array[index] = '~';
             }
         } else {
-            console.log("lookupIndex of " + element + " not found");
             array[index] = '^';
         }
     });
@@ -85,7 +82,6 @@ const decrypt = (cypherText, key) => {
         var lookupIndex = charArray.indexOf(element);
 
         if (lookupIndex !== -1) {
-            console.log("DEC: lookupIndex of " + element + ":" + lookupIndex + " and key.charCodeAt(" + index % key.length + "):" + key.charCodeAt(index % key.length));
             array[index] = charArray[(lookupIndex - key.charCodeAt(index % key.length)).mod(charArray.length)];
         } else {
             array[index] = '^';
