@@ -14,7 +14,7 @@ Number.prototype.mod = function (n) {
 
 const plainTextChangeHandler = () => {
     var plaintext = plaintextElement.value.trim();
-    var key = keyElement.value.trim();
+    var key = keyElement.value.trim().toLowerCase();
 
     if (plaintext === '' || key === '') {
         ciphertextElement.value = '';
@@ -27,7 +27,7 @@ const plainTextChangeHandler = () => {
 
 const cypherTextChangeHandler = () => {
     var cypherText = ciphertextElement.value.trim();
-    var key = keyElement.value.trim();
+    var key = keyElement.value.trim().toLowerCase();
 
     if (cypherText === '' || key === '') {
         plaintextElement.value = '';
@@ -41,7 +41,7 @@ const cypherTextChangeHandler = () => {
 const keyChangeHandler = () => {
     var plaintext = plaintextElement.value.trim();
     var cypherText = ciphertextElement.value.trim();
-    var key = keyElement.value.trim();
+    var key = keyElement.value.trim().toLowerCase();
 
     if (plaintext !== '' && plaintextEdited) {
         ciphertextElement.value = encrypt(plaintext, key);
