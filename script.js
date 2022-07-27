@@ -61,6 +61,8 @@ const encrypt = (plaintext, key) => {
 
             if (array[index] === '\n') {
                 array[index] = '~';
+            } else if (array[index] === ' ') {
+                array[index] = '*';
             }
         } else {
             array[index] = '^';
@@ -77,6 +79,9 @@ const decrypt = (cypherText, key) => {
         if (element === '~') {
             array[index] = '\n';
             element = '\n';
+        } else if (element === '*') {
+            array[index] = ' ';
+            element = ' ';
         }
 
         var lookupIndex = charArray.indexOf(element);
